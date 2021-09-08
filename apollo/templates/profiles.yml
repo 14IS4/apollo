@@ -1,0 +1,22 @@
+config:
+  partial_parse: True
+  use_colors: False
+  send_anonymous_usage_stats: False
+
+sf:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: {{ ACCOUNT }}.us-east-1
+
+      # User/password auth
+      user: "{{ DBT_USER }}"
+      password: "{{ DBT_PASSWORD }}"
+
+      role: SYSADMIN
+      database: BONEYARD
+      warehouse: TRANSFORMING
+      schema: {{ SCHEMA }}
+      client_session_keep_alive: False
+      query_tag: "{{ RUN_ID }}"
